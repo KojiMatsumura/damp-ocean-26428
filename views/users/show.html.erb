@@ -1,0 +1,42 @@
+<div class="main">
+  <div class="user-show-container">
+<% if @user.id == @current_user.id %>
+    <div class="to-user-edit">
+      <img class="to-user-image" src="<%= "/user_images/#{@user.image_name}" %>">
+      <%= link_to("#{@user.name}", "/users/#{@user.id}/edit",class:"user-edit") %>
+    </div>
+
+    <% @posts.each do |post| %> <!--# ユーザーのpostsメソッド（where文あり）についてのeach文-->
+      <!--<div class="posts-index-item">
+        <div class="post-right">
+          <div class="post-user-name">
+
+              <%= link_to("編集", "/posts/#{post.id}/edit") %>
+              <%= link_to("削除", "/posts/#{post.id}/destroy", {method: "post"}) %>
+
+          </div>
+          <%= link_to(post.content, "/posts/#{post.id}") %>
+          <% if post.group_id != nil %>
+            <%= link_to("グループ名", "/groups/#{post.group_id}") %>
+          <% end %>
+        </div>
+      </div>-->
+      <table class="user-post-list">
+        <tr>
+          <td class="user-image"><%= link_to("/users/#{@user.id}/edit") do %>
+            <img class="my-image" src="<%= "/user_images/#{@user.image_name}" %>"></td>
+            <% end %>
+          <td class="needs"><%= link_to(@user.name,"/users/#{@user.id}") %></td>
+          <td class="buy-list"><%= link_to(post.content, "/posts/#{post.id}") %></td>
+          <td class="bought-items"><%= link_to("購入済", "/posts/#{post.id}/buy", {method: "post"}) %></td>
+          <% if post.user_id == @current_user.id %>
+            <td class="post-group-edit"><%= link_to("編集", "/posts/#{post.id}/edit") %>
+            </td>
+          <% end %>
+        </tr>
+      </table>
+    <% end %>
+    <%= paginate @posts %>
+<% end %>
+  </div>
+</div>

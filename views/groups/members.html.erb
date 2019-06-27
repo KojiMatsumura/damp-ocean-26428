@@ -1,0 +1,29 @@
+<div class="main group-wide-container">
+  <%= link_to("グループトップ","/groups/#{@group.id}", class:"group-member-to-top") %>
+  <p class="edit-form-heading">メンバー一覧</p>
+  <div class="member-name">
+
+    <% @connections.each do |connection| %>
+    <% user=User.find_by(id: connection.user_id) %>
+    <p>全員が退会してメンバーがいなくなってもグループと投稿データは残ります。誤って退会した場合は入り直してください</p>
+      <table class="group-member-table">
+        <tr>
+          <td class="group-member-name"><%= link_to("#{user.name}", "/users/#{user.id}") %></td>
+          <td class="buying"><% if user.id == @current_user.id %>
+            <%= link_to("退会する", "/groups/#{@group.id}/unsubscribe", {method: "post"}) %>
+          <% else %>
+            <%= link_to("退会させる", "/groups/#{@group.id}/#{user.id}/force_unsubscribe", {method: "post"}) %>
+          <% end %></td>
+        </tr>
+      <% end %>
+      <%= paginate @connections %>
+      </table>
+  </div>
+  <p>グループを解散させると、このグループ内の投稿も削除されます</p>
+  <div class="break-up">
+    <%= link_to("グループを解散させる", "/groups/#{@group.id}/destroy", {method: "post", class:"group-member-menus"}) %>
+  </div>
+  <div class="edit-group">
+    <%= link_to("グループ名とグループコードを変更する", "/groups/#{@group.id}/edit", class:"group-member-menus") %>
+  </div>
+</div>

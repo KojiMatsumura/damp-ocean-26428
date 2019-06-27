@@ -1,0 +1,24 @@
+<div class="main users-new">
+  <div class="form-container">
+    <div class="form users-form">
+      <img class="form-under" src="assets/form_image.jpeg">
+      <div class="form-body">
+        <% if @error_message %>
+          <div class="form-error">
+            <%= @error_message %>
+          </div>
+        <% end %>
+
+        <%= form_tag("/login") do %>
+          <p class="form-description">メールアドレス</p>
+          <input name="email" class="input-field" value="<%= @email %>dalton@da">
+          <p class="form-description">パスワード</p>
+          <input class="input-field" type="password" name="password" value="<%= @password %>da">
+          <p class="disclaimer">※最初から入っている値でログインできます</p>
+          <input class="login-submit" type="submit" value="ログイン">
+        <% end %>
+        <!--<%= link_to("管理者ログイン", "/admin/login", class:"admin-login") %>-->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BuyingApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= favicon_link_tag 'orange_circle.png'%>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/5.9.0/css/font-awesome.min.css">
+  </head>
+
+  <body>
+    <header>
+      <div class="header-logo">
+        <div class="header-left">
+        <% if @current_user %>
+          <%= link_to("買い物リスト", "/posts/index") %>
+        <% else %>
+          <%= link_to("買い物リスト", "/") %>
+        <% end %>
+        </div>
+        <div class="header-right">
+      <ul class="header-menus">
+        <% if @current_user %>
+          <li class="my-header">
+            <%= link_to("/users/#{@current_user.id}") do %>
+              <img class="header-my-image" src="<%= "/user_images/#{@current_user.image_name}" %>">
+              <% end %>
+            <%= link_to(@current_user.name, "/users/#{@current_user.id}", class:"header-my-name") %>
+          </li>
+          <li>
+            <%= link_to("自分の投稿一覧", "/posts/index") %>
+          </li>
+          <li>
+            <%= link_to("新規投稿", "/posts/new") %>
+          </li>
+          <li>
+            <%= link_to("買い物済マイリスト", "/posts/bought") %>
+          </li>
+          <li>
+            <%= link_to("グループ", "/groups/home") %>
+          </li>
+          <li>
+            <%= link_to("ログアウト", "/logout", {method: :post}) %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to("買い物リストとは", "/about") %>
+          </li>
+          <li>
+            <%= link_to("投稿一覧", "/posts/all_index") %>
+          </li>
+          <li>
+            <%= link_to("新規登録", "/signup") %>
+          </li>
+          <li>
+            <%= link_to("ログイン", "/login") %>
+          </li>
+        <% end %>
+      </ul>
+      </div>
+    </div>
+    </header>
+
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

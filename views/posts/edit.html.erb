@@ -1,0 +1,31 @@
+<%= form_tag("/posts/#{@post.id}/update") do %>
+
+<div class="main form">
+  <div class="form-body">
+    <% @post.errors.full_messages.each do |message| %> <!--新規投稿が失敗したときにはエラーメッセージを表示-->
+      <div class="form-error">
+      <%= message %>
+      </div>
+    <% end %>
+    <p>欲しいもの（必ず入力してください）</p>
+    <input name="content" value=<%= @post.content %>>
+    <!--<p>店の種類</p>
+    <select name="shop">
+      <option>スーパー</option>
+      <option>100円ショップ</option>
+      <option>ドンキ</option>
+      <option>衣料品店</option>
+      <option>その他</option>
+    </select>
+    <p>繰り返し</p>
+    <select name="repeat">
+      <option>繰り返さない</option>
+      <option>１週間ごと</option>
+      <option>１か月ごと</option>
+      <option>１年ごと</option>
+    </select>-->
+    <p>毎週投稿は<%= link_to("新規投稿", "/posts/new") %>からしてください</p>
+    <input type="submit" value="投稿">
+  </div>
+</div>
+<% end %>

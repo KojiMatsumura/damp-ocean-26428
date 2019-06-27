@@ -1,0 +1,40 @@
+<div class="main">
+<div class="edit-form-heading">新規投稿（個人用）</div>
+<%= form_tag("/posts/create") do %>
+  <div class="form">
+    <div class="new-form-body">
+        <% @post.errors.full_messages.each do |message| %> <!--新規投稿が失敗したときにはエラーメッセージを表示-->
+          <div class="form-error">
+          <%= message %>
+          </div>
+        <% end %>
+      <p class="form-description">欲しいもの</p>
+        <input class="input-field" name="content" value=<%= @post.content %>>
+      <!--<p>店の種類</p>
+      <select name="shop">
+        <option>スーパー</option>
+        <option>100円ショップ</option>
+        <option>ドンキ</option>
+        <option>衣料品店</option>
+        <option>その他</option>
+      </select>-->
+      <p class="form-description">繰り返し（毎週）</p>
+      <select class="select-field" name="repeat">
+        <option class="option">繰り返さない</option>
+        <%# @days_j.each do |day_j| %>
+          <!--<option class="option"><%#= |day_j| %></option>-->
+          <option class="option">日曜日</option>
+          <option class="option">月曜日</option>
+          <option class="option">火曜日</option>
+          <option class="option">水曜日</option>
+          <option class="option">木曜日</option>
+          <option class="option">金曜日</option>
+          <option class="option">土曜日</option>
+        <%# end %>
+      </select>
+      <input class="input-submit" type="submit" value="投稿">
+    </div>
+  </div>
+<% end %>
+<p class="group-needs">グループで投稿する場合は<%= link_to("こちら", "/groups/home") %>から</p>
+</div>

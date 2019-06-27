@@ -1,0 +1,85 @@
+<div class="main users-index">
+  <div class="container">
+    <h1 class="users-heading">ユーザー一覧</h1>
+    <% @users.each do |user| %>
+      <div class="users-index-item">
+        <!--写真は省略-->
+        <div class="user-right">
+          <%= link_to(user.name, "/admin/#{user.id}/edit") %>
+          <% if @current_user.id != user.id %>
+            <% if user.admin == false %>
+              <%= link_to("管理者として登録する", "/admin/#{user.id}/new", {method: "post"}) %>
+            <% else %>
+              <%= link_to("管理者登録を解除する", "/admin/#{user.id}/cancel", {method: "post"}) %>
+            <% end %>
+            <%= link_to("ユーザーを消去する", "/admin/#{user.id}/destroy", {method: "post"}) %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <%= paginate @users %>
+    <h1 class="users-heading">グループ一覧</h1>
+    <% if @groups.present? %>
+      <% @groups.each do |group| %>
+        <div class="users-index-item">
+          <!--写真は省略-->
+          <div class="user-right">
+            <%= link_to(group.name, "/admin/#{group.id}/gedit") %>
+            <%= link_to("このグループを削除", "admin/#{group.id}/gdestroy", {method: "post"}) %>
+            <% connections = Connection.where(group_id: group.id) %>
+            <% if connections.present? %>
+              <% connections.each do |connection| %>
+                <% user = User.find_by(id: connection.user_id) %>
+                <%= link_to(user.name, "/admin/#{user.id}/edit") %>
+                <%= link_to("このユーザーを退会させる", "/admin/#{user.id}/#{group.id}/unsubscribe", {method: "post"}) %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <%= paginate @groups %>
+    <% end %>
+
+    <% if @posts.present? %>
+      <p>投稿一覧</p>
+      <% @posts.each do |post| %>
+        <div class="posts-index-item">
+          <div class="post-right">
+            <%# user = User.find_by(id:post.user_id) %>
+            <%= link_to(post.user.name, "/admin/#{post.user.id}/edit") %>
+            <% if post.group_id != nil %>
+              <%# group = Group.find_by(id: post.group_id) %>
+              <%= link_to(post.group.name, "/admin/#{post.group.id}/gedit") %>
+            <% end %>
+            <%= link_to(post.content, "/admin/#{post.id}/pedit") %>
+            <%= link_to("削除", "/admin/#{post.id}/pdestroy", {method: "post"}) %>
+          </div>
+        </div>
+      <% end %>
+      <%= paginate @posts %>
+    <% end %>
+    <% if @repeats.present? %>
+      <p>毎週の定期投稿一覧</p>
+      <% for i in 0..6 do %>
+        <% if @days[i].present? %>
+          <p><%= @days_j[i] %></p>
+          <% @days[i].each do |day| %>
+            <%= day.content %>
+            <% user = User.find_by(id: day.user_id) %>
+            <%= link_to(user.name, "/admin/#{user.id}/edit") %>
+              <% if day.group_id != nil %>
+                <% group = Group.find_by(id: day.group_id) %>
+                <%= link_to(group.name, "/admin/#{group.id}/gedit") %>
+              <% end %>
+              <% if day.user_id == @current_user.id %>
+                <%= link_to("毎週投稿をやめる", "/admin/#{day.id}/quit", {method: "post"}) %>
+              <% end %>
+          <% end %>
+          <%= paginate @days[i] %>
+        <% end %>
+      <% end %>
+      <% else %>
+        <p>毎週の定期投稿はありません</p>
+    <% end %>
+  </div>
+</div>

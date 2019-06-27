@@ -1,0 +1,23 @@
+<div class="main posts-index">
+  <div class="group-wide-container">
+    <%= link_to("グループトップ","/groups/#{@group.id}", class:"group-bought-to-top") %>
+    <p class="bought-index-title">買い物済みリスト</p>
+
+    <% if @posts.present? %>
+    <% @posts.each do |post| %>
+      <table class="group-bought-table">
+        <tr>
+          <td class="buy-list"><%= link_to(post.content, "/posts/#{post.id}") %></td>
+          <td class="buying"><%= link_to("購入リストに戻す", "/posts/#{post.id}/#{@group.id}/return_list", {method: "post"}) %></td>
+          <td class="buying"><%= link_to("削除", "/posts/#{post.id}/#{@group.id}/destroy", {method: "post"}) %></td>
+          <td class="buyer">依頼者:<%= link_to("#{post.user.name}", "/users/#{post.user.id}") %></td>
+          <td class="buyer">購入者:<%= link_to("#{post.buyer.name}", "/users/#{post.buyer.id}") %></td>
+        </tr>
+      <% end %>
+      <%= paginate @posts %>
+      </table>
+    <% else %>
+      <p>購入済のものはありません</p>
+    <% end %>
+  </div>
+</div>

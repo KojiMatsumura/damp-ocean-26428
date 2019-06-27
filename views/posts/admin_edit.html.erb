@@ -1,0 +1,24 @@
+
+<%= form_tag("/admin/#{@post.id}/pupdate") do %>
+
+<div class="main form">
+  <div class="form-body">
+    <% @post.errors.full_messages.each do |message| %> <!--新規投稿が失敗したときにはエラーメッセージを表示-->
+      <div class="form-error">
+      <%= message %>
+      </div>
+    <% end %>
+    <p>欲しいもの</p>
+    <input name="content" value=<%= @post.content %>>
+    <!--<p>店の種類</p>
+    <select name="shop">
+      <option>スーパー</option>
+      <option>100円ショップ</option>
+      <option>ドンキ</option>
+      <option>衣料品店</option>
+      <option>その他</option>
+    </select>-->
+    <input type="submit" value="投稿">
+  </div>
+</div>
+<% end %>

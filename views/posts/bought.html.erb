@@ -1,0 +1,19 @@
+<div class="main posts-index">
+  <div class="bought-container">
+    <p class="bought-index-title">買い物済みリスト</p>
+    <% if @posts.present? %>
+    <% @posts.each do |post| %>
+      <table class="bought-table">
+        <tr>
+          <td class="buy-list"><%= link_to(post.content, "/posts/#{post.id}") %></td>
+          <td class="buying"><%= link_to("購入リストに戻す", "/posts/#{post.id}/return_list", {method: "post"}) %></td>
+          <td class="buying"><%= link_to("削除", "/posts/#{post.id}/destroy", {method: "post"}) %></td>
+        </tr>
+      <% end %>
+      <%= paginate @posts %>
+      </table>
+    <% else %>
+      <p>購入済のものはありません</p>
+    <% end %>
+  </div>
+</div>

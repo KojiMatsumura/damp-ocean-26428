@@ -1,0 +1,60 @@
+<div class="main posts-index">
+  <div class="posts-container">
+    <!--<%#<%= link_to(@current_user.name,"/users/#{@current_user.id}") %>-->
+    <p class="posts-index-title">投稿一覧</p>
+    <% if @posts.present? %>
+      <% @posts.each do |post| %>
+      <% user=User.find_by(id: post.user_id) %>
+      <table class="post-list">
+        <tr>
+          <td class="user-image"><%= link_to("/users/#{post.user.id}") do %>
+            <img class="my-image" src="<%= "/user_images/#{post.user.image_name}" %>"></td>
+            <% end %>
+          <td class="buy-list"><%= link_to(post.content, "/posts/#{post.id}") %></td>
+          <td class="buying"><%= link_to( "購入済" ,"/posts/#{post.id}/buy", {method: "post"}) %>
+          </td>
+        </tr>
+
+        <!--<div class="posts-index-item">
+          <div class="post-right">
+            <%#<%= link_to(post.content, "/posts/#{post.id}", class:"buy-list") %>
+
+          </div>
+        </div>
+        <div class="posts-buying">
+          <%#<%= link_to("購入済", "/posts/#{post.id}/buy", {method: "post", class:"buying"}) %>
+        </div>-->
+      <% end %>
+      <%= paginate @posts %>
+      </table>
+    <% end %>
+    <%= link_to("買い物済リスト", "/posts/bought", class:"bought-list") %>
+  </div>
+  <div class="posts-repeat">
+    <p class="posts-index-title">毎週の定期投稿一覧</p>
+    <% if @repeats.present? %>
+      <% for i in 0..6 do %>
+        <% if @days[i].present? %>
+          <p class="repeat-day"><%= @days_j[i] %></p>
+          <% @days[i].each do |day| %>
+            <table class="repeat-post-list">
+              <tr>
+                <% user = User.find_by(id: day.user_id) %>
+                <!--<td class="user-image"><%#<%= link_to("users/#{day.user.id}") do %>
+                  <img class="my-image" src="<%#<%= "/user_images/#{day.user.image_name}" %>"></td>
+                  <%#<% end %>-->
+                <td class="buy-list"><%= day.content %></td>
+                <% if day.user_id == @current_user.id %>
+                  <td class="buying"><%= link_to("毎週投稿をやめる", "/posts/#{day.id}/quit", {method: "post"}) %>
+                  </td>
+                <% end %>
+              </tr>
+          <% end %>
+          <%= paginate @days[i] %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>毎週の定期投稿はありません</p>
+    <% end %>
+  </div>
+</div>

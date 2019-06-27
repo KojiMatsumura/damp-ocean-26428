@@ -1,0 +1,22 @@
+<div class="main users-new">
+  <div class="container">
+    <div class="form-heading">グループ参加</div>
+    <div class="form users-form">
+      <div class="form-body">
+        <% if @error_message %>
+          <div class="form-error">
+            <%= @error_message %>
+          </div>
+        <% end %>
+
+        <%= form_tag("/groups/join") do %>
+          <p>グループ名</p>
+          <input name="name" value="<%= @name %>">
+          <p>グループコード</p>
+          <input type="password" name="password" value="<%= @password %>">
+          <input type="submit" value="参加">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

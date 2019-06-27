@@ -1,0 +1,46 @@
+<div class="main users-edit">
+  <div class="container">
+    <%#<%= link_to("グループトップ","/groups/#{@group.id}") %>
+    <div class="form-heading">グループ編集</div>
+    <div class="form users-form">
+      <div class="form-body">
+        <% @group.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
+
+        <%= form_tag("/admin/#{@group.id}/gupdate", {multipart: true}) do %>
+          <p>グループ名</p>
+          <input name="name" value="<%= @group.name %>">
+          <!--<p>画像</p>
+          <input name="image" type="file">-->
+          <p>グループコード</p>
+          <input type="password" name="password" value="<%= @group.password_digest %>">
+          <input type="submit" value="保存">
+        <% end %>
+
+        <% if @posts.present? %>
+          <p>投稿一覧</p>
+          <% @posts.each do |post| %>
+            <div class="posts-index-item">
+              <div class="post-right">
+                <%= post.content %>
+                <%= link_to("編集", "/admin/#{post.id}/pedit") %>
+                <%= link_to("削除", "/admin/#{post.id}/pdestroy", {method: "post"}) %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+
+        <% if @connections.present? %>
+          <% @connections.each do |connection| %>
+            <% user = User.find_by(id: connection.user_id) %>
+            <%= link_to(user.name, "/admin/#{user.id}/edit") %>
+            <%= link_to("このユーザーを退会させる", "/admin/#{user.id}/#{group.id}/unsubscribe", {method: "post"}) %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

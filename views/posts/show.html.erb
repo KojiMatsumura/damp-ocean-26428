@@ -1,0 +1,22 @@
+<div class="main">
+<p><%= "idが「#{@id}」の投稿詳細画面です" %></p>
+
+<p>
+  <%= @post.content %>
+</p>
+<div class="post-time">
+  <%= @post.created_at %>
+</div>
+<% if @post.user.id == @current_user.id %>
+  <%= link_to("編集", "/posts/#{@post.id}/edit") %> <!--#投稿ユーザーのみ編集画面を表示-->
+  <%= link_to("削除", "/posts/#{@post.id}/destroy", {method: "post"}) %>
+  <%= link_to("購入済", "/posts/#{@post.id}/buy", {method: "post"}) %>
+<% end %>
+
+
+    <div class="user">
+      <h2><%= @post.user.name %></h2><!--#(@userはposts_controller.rbのもの）-->
+      <p><%= @post.user.email %></p>
+
+    </div>
+</div>

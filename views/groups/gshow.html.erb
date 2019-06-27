@@ -1,0 +1,99 @@
+<div class="main posts-index">
+  <div class="group-container">
+    <div class="to-group-edit">
+      <img class="to-user-image" src="<%= "/group_images/#{@group.image_name}" %>">
+      <%= link_to("#{@group.name}", "/groups/#{@group.id}/edit",class:"user-edit") %>
+    </div>
+    <% if @posts.present? == false %>
+      <p>まだ投稿はありません</p>
+    <% else %>
+      <% @posts.each do |post| %>
+        <!--<div class="posts-index-item">
+          <div class="post-right">
+            <div class="post-user-name">
+              <%= link_to(post.user.name,"/users/#{post.user.id}") %>
+            </div>
+            <%= link_to(post.content, "/posts/#{post.id}/#{@group.id}") %>
+            <%= link_to("購入済", "/posts/#{post.id}/#{@group.id}/buy", {method: "post"}) %>
+            <% if post.user_id == @current_user.id %>
+              <%= link_to("編集", "/posts/#{post.id}/#{@group.id}/edit") %>
+            <% end %>
+          </div>
+        </div>-->
+
+      <table class="group-post-list">
+        <tr>
+          <% user = User.find_by(id: post.user_id) %>
+          <td class="user-image"><%= link_to("/users/#{post.user.id}") do %>
+            <img class="my-image" src="<%= "/user_images/#{post.user.image_name}" %>"></td>
+            <% end %>
+          <td class="needs"><%= link_to(post.user.name,"/users/#{post.user.id}") %></td>
+          <td class="group-buy-list"><%= link_to(post.content, "/posts/#{post.id}/#{@group.id}") %></td>
+          <td class="bought-items"><%= link_to("購入済", "/posts/#{post.id}/#{@group.id}/buy", {method: "post"}) %></td>
+          <% if post.user_id == @current_user.id %>
+            <td class="post-group-edit"><%= link_to("編集", "/posts/#{post.id}/#{@group.id}/edit") %>
+            </td>
+          <% end %>
+        </tr>
+      </table>
+      <% end %>
+      <%= paginate @posts %>
+    <% end %>
+
+
+      <%= link_to("購入済リスト", "/posts/#{@group.id}/bought", class: "bought-list-g") %>
+      <p class="repeat-text">定期投稿</p>
+      <% if @repeats.present? %>
+        <p>毎週の定期投稿一覧</p>
+        <% for i in 0..6 do %>
+          <% if @days[i].present? %>
+            <p><%= @days_j[i] %></p>
+            <% @days[i].each do |day| %>
+              <%= day.content %>
+              <% if day.user_id == @current_user.id %>
+                <%= link_to("毎週投稿をやめる", "/posts/#{day.id}/#{@group.id}/quit", {method: "post"}) %>
+              <% else %>
+                <% user=User.find_by(id: day.user_id) %>
+                <p>毎週投稿者は<%= link_to("#{user.name}", "/users/#{user.id}") %>です</p>
+              <% end %>
+            <% end %>
+            <%= paginate @days[i] %>
+          <% end %>
+        <% end %>
+        <% else %>
+          <p>毎週の定期投稿はありません</p>
+        <% end %>
+
+    <%= form_tag("/groups/#{@group.id}/create") do %>
+      <div class="form">
+        <div class="group-show-form-body">
+          <% @post.errors.full_messages.each do |message| %> <!--新規投稿が失敗したときにはエラーメッセージを表示-->
+            <div class="form-error">
+            <%= message %>
+            </div>
+          <% end %>
+
+          <p class="form-description">欲しいもの（必ず入力してください）</p>
+          <input name="content" class="input-field" value=<%= @post.content %>>
+          <!--<p>店の種類</p>
+          <select name="shop">
+            <option>スーパー</option>
+            <option>100円ショップ</option>
+            <option>ドンキ</option>
+            <option>衣料品店</option>
+            <option>その他</option>
+          </select>-->
+          <p class="form-description">繰り返し</p>
+          <select class="repeat-field" name="repeat">
+            <option>繰り返さない</option>
+            <% @days_j.each do |day_j| %>
+              <option><%= day_j %></option>
+            <% end %>
+          </select>
+          <input class="input-submit" type="submit" value="投稿">
+        </div>
+      </div>
+    <% end %>
+    <%= link_to("メンバー一覧とグループ編集", "/groups/#{@group.id}/members", class:"group-member-edit") %>
+  </div>
+</div>

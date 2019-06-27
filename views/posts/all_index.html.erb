@@ -1,0 +1,40 @@
+<div class="main posts-index">
+  <div class="posts-container">
+    <!--<%#<%= link_to(@current_user.name,"/users/#{@current_user.id}") %>-->
+    <p class="posts-index-title">投稿一覧</p>
+    <% if @posts.present? %>
+      <% @posts.each do |post| %>
+      <% user=User.find_by(id: post.user_id) %>
+      <table class="post-list">
+        <tr>
+          <td class="user-image"><img class="my-image" src="<%= "/user_images/#{post.user.image_name}" %>"></td>
+          <td class="buy-list"><%= link_to(post.content, "/posts/#{post.id}") %></td>
+          <td class="buying"><%= link_to( "購入済" ,"/posts/#{post.id}/buy", {method: "post"}) %>
+          </td>
+        </tr>
+      </table>
+      <% end %>
+      <%= paginate @posts %>
+    <% end %>
+  </div>
+  <div class="posts-repeat">
+    <% if @repeats.present? %>
+      <p class="posts-index-title">毎週の定期投稿一覧</p>
+      <% for i in 0..6 do %>
+        <% if @days[i].present? %>
+          <p class="repeat-day"><%= @days_j[i] %></p>
+          <% @days[i].each do |day| %>
+            <table class="repeat-post-list">
+              <tr>
+                <% user = User.find_by(id: day.user_id) %>
+                <td class="buy-list"><%= day.content %></td>
+              </tr>
+          <% end %>
+          <%= paginate @days[i] %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>毎週の定期投稿はありません</p>
+    <% end %>
+  </div>
+</div>

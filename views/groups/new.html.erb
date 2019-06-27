@@ -1,0 +1,23 @@
+<div class="main users-new">
+  <div class="container">
+    <div class="edit-form-heading">新規グループ作成</div>
+    <div class="form users-form">
+      <div class="group-new-form-body">
+        <% @group.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
+
+        <%= form_tag("/groups/create") do %>
+          <p class="form-description">グループ名</p>
+          <input class="input-field" name="name" value="<%= @group.name %>">
+          <p class="form-description">グループコード（メンバーを招待するときに使います）</p>
+          <p class="group-disclaimer">３文字以上で入力してください。他のグループと同じコードは設定できません。</p>
+          <input class="input-field" type="password" name="password" value="<%= @group.password_digest %>">
+          <input class="input-submit" type="submit" value="グループ作成">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

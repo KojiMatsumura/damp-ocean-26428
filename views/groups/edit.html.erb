@@ -1,0 +1,25 @@
+<div class="main users-edit">
+  <div class="group-edit-container">
+    <div class="edit-form-heading">グループ編集</div>
+    <div class="form users-form">
+      <div class="edit-form-body">
+        <% @group.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
+
+        <%= form_tag("/groups/#{@group.id}/update", {multipart: true}) do %>
+          <p class="form-description">グループ名</p>
+          <input class="input-field" name="name" value="<%= @group.name %>">
+          <p class="form-description">画像</p>
+          <input class="input-field" name="image" type="file">
+          <p class="form-description">グループコード</p>
+          <input class="input-field" type="password" name="password" value="<%= @group.password_digest %>">
+          <input class="input-submit" type="submit" value="保存">
+        <% end %>
+      </div>
+    </div>
+    <%= link_to("グループトップ","/groups/#{@group.id}", class:"edit-to-group-home") %>
+  </div>
+</div>

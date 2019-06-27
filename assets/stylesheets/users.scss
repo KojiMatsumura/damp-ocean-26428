@@ -1,0 +1,204 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin btn{
+  text-decoration: none;
+  display: inline-block;
+  background-color: #f8f8f8;
+  padding:10px 20px;
+  border-radius: 5px;
+  color: black;
+  background-color: #c0c0c0;
+  &:hover{
+    background-color: #e0e0e0;
+    text-decoration: none;
+  }
+}
+
+@mixin form{
+  background-color: #7abcff;
+  border-radius: 10px;
+  opacity: 0.8;
+  position: absolute;
+  width: 50%;
+}
+
+@mixin submit{
+  cursor:pointer;
+  margin-left: 25%;
+  width:50%;
+  font-size: 20px;
+  padding:5px 10px;
+  border-radius: 10px;
+  color:black;
+  &:hover{
+    background-color: #e0e0e0;
+  }
+}
+
+.admin-author{
+  margin-top: 60px;
+}
+
+.admin-form-body{
+  margin: auto;
+  width: 50%;
+  height: 300px;
+  position: relative;
+}
+
+.admin-login{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  @include btn
+}
+
+.disclaimer{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.edit-form-body{
+  height: 550px;
+  top: 110px;
+  left:25%;
+  @include form
+}
+
+.edit-form-heading{
+  padding-top:25px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.form-body{
+  height: 400px;
+  top: 15%;
+  left:5%;
+  @include form
+}
+
+.form-description{
+  padding-left: 10%;
+  font-size: 25px;
+  padding-top: 10px;
+  color: #1f1f1f;
+}
+
+.form-heading{
+  padding-top:75px;
+  text-align: center;
+  font-size: 70px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.form-under{
+  width: 100%;
+  background-size: cover;
+  display: inline-block;
+  /*top:0px;
+  position: absolute;*/
+}
+
+.group-needs{
+  position: absolute;
+  top:550px;
+  left:70%;
+  a{
+    text-decoration: none;
+  }
+}
+
+.input-field{
+  margin-left: 10%;
+  width:80%;
+  font-size: 20px;
+  padding:5px 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.input-new-submit{
+  margin-top: 40px;
+  margin-bottom: 10px;
+  @include submit
+}
+
+.input-submit{
+  margin-top: 50px;
+  margin-bottom: 10px;
+  @include submit
+}
+
+.login-submit{
+  margin-bottom: 10px;
+  @include submit
+}
+
+.over-image{
+  position: absolute;
+  top: 5%;
+  left:50%;
+  -ms-transform: translate(-50%,0);
+  -webkit-transform: translate(-50%,0);
+  transform: translate(-50%,0);
+}
+
+.select-field{
+  margin-left: 10%;
+  width:80%;
+  font-size: 20px;
+  padding:5px 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.signup-form-body{
+  height: 500px;
+  top: 15%;
+  left:5%;
+  @include form
+}
+
+.signup-user{
+  top: 60px;
+}
+
+.to-user-edit{
+  margin-bottom: 20px;
+}
+
+.to-user-image{
+  width:40px;
+  height:40px;
+  object-fit: cover;
+  display: inline-block;
+}
+
+.user-edit{
+  font-size: 30px;
+  color: black;
+}
+
+/*.users-new{
+  background-color: #f8f8f8;
+  background-size: cover;
+  position: relative;
+}*/
+
+.user-post-list{
+  border: 1px solid #888;
+  width:550px;
+}
+
+.user-show-container{
+  top:40px;
+  left:5%;
+  position: absolute;
+}

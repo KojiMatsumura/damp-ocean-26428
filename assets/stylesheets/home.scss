@@ -1,0 +1,152 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.about-container{
+  /*height:940px;*/
+  top:60px;
+  background-color: black;
+  background-size: cover;
+  position: relative;
+}
+
+.about-image{
+  width: 100%;
+  background-size: cover;
+  display: inline-block;
+  opacity: 0.35;
+}
+
+.about-over-image{
+  position: absolute;
+  top: 5%;
+  left:25%;
+  -ms-transform: translate(-50%,0);
+  -webkit-transform: translate(-50%,0);
+  transform: translate(-50%,0);
+  color: #fff;
+  font-size: 60px;
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+
+
+.about-signup{
+  color: #fff;
+  &:hover{
+    color:rgba(255,255,255,1)
+  }
+}
+
+.about-new{
+  font-size: 40px;
+  padding-top: 30px;
+}
+
+.btn{
+  display:inline-block;
+  position:absolute;
+  opacity: 0.6;
+  text-decoration: none;
+  /*box-shadow:5px 15px ;
+  &:active{
+    box-shadow:none;
+    position:relative;
+    top:15px;
+    left:5px;
+  }*/
+  &:hover{
+    opacity: 1;
+  }
+}
+
+.btn-large{
+  font-size: 30px;
+  padding: 40px 150px;
+  background-color: #0aff0a;
+  position:absolute;
+  top:50%;
+  left:30%;
+  -ms-transform: translate(-50%,0);
+  -webkit-transform: translate(-50%,0);
+  transform: translate(-50%,0);
+  border-radius: 10px;
+  font-weight: bold;
+  &:hover{
+    background-color: #75ff75;
+  }
+}
+
+.btn-small{
+  font-size: 30px;
+  padding: 40px 150px;
+  background-color: #5b5bff;
+  position:absolute;
+  top:50%;
+  left:70%;
+  -ms-transform: translate(-50%,0);
+  -webkit-transform: translate(-50%,0);
+  transform: translate(-50%,0);
+  border-radius: 10px;
+  font-weight: bold;
+  &:hover{
+    background-color: #9393FF;
+  }
+}
+
+.description{
+  /*margin-top: 100px;*/
+  position: absolute;
+  top: 20%;
+  left:8%;
+  color: #fff;
+  font-size: 25px;
+  font-weight: bold;
+  opacity: 0.7;
+  p{
+    padding-bottom: 50px;
+  }
+}
+
+.home-container{
+  /*height:940px;*/
+  background-color: black;
+  background-size: cover;
+  position: relative;
+}
+
+.home-desc{
+  position: absolute;
+  top: 43%;
+  left:17%;
+  color: #fff;
+  font-size: 25px;
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+.home-image{
+  width: 100%;
+  background-size: cover;
+  display: inline-block;
+  opacity: 0.35;
+}
+
+.home-image::before{
+  background-color: black;
+  opacity: 0.4;
+}
+
+.over-image{
+  position: absolute;
+  top: 5%;
+  left:50%;
+  -ms-transform: translate(-50%,0);
+  -webkit-transform: translate(-50%,0);
+  transform: translate(-50%,0);
+  color: #fff;
+  font-size: 60px;
+  font-weight: bold;
+  opacity: 0.7;
+}

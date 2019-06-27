@@ -1,0 +1,211 @@
+// Place all the styles related to the groups controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin btn{
+  text-decoration: none;
+  display: inline-block;
+  background-color: #f8f8f8;
+  padding:10px 20px;
+  border-radius: 5px;
+  color: black;
+  background-color: #c0c0c0;
+  &:hover{
+    background-color: #e0e0e0;
+    text-decoration: none;
+  }
+}
+
+@mixin form{
+  background-color: #7abcff;
+  border-radius: 10px;
+  opacity: 0.8;
+  position: absolute;
+  width: 50%;
+}
+
+.bought-list-g{
+  margin-top: 100px;
+  margin-left: 300px;
+  @include btn
+}
+
+.edit-to-group-home{
+  margin-top: 400px;
+  position: relative;
+  top:90%;
+  left:80%;
+  @include btn
+}
+
+.group-buy-list{
+  padding: 10px;
+  display: block;
+  width:350px;
+  &:hover{
+    background-color: #ccc;
+  }
+  a{
+    text-decoration: none;
+    color:black;
+    display: block;
+  }
+}
+
+.group-container{
+  margin-left: 5%;
+  float:left;
+  width: 700px;
+}
+
+.group-disclaimer{
+  text-align: center;
+}
+
+.group-home-container{
+  margin-left: 5%;
+  float:left;
+  width: 700px;
+}
+
+.group-form-body{
+  width: 40%;
+  height: 300px;
+  background-color: #7abcff;
+  border-radius: 10px;
+  position: absolute;
+  margin-top: 70px;
+  left:55%;
+  opacity: 0.8;
+  top:30%;
+}
+
+.group-home-menus{
+  margin-bottom: 20px;
+  @include btn
+}
+
+.group-image{
+  width:40px;
+  object-fit: cover;
+}
+
+.group-links{
+  margin-left: 60%;
+  margin-top: 70px;
+  width: 300px;
+  position: absolute;
+}
+
+.group-list{
+  padding: 10px;
+  display: block;
+  width:430px;
+  &:hover{
+    background-color: #ccc;
+  }
+  a{
+    text-decoration: none;
+    color:black;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+}
+
+.group-member-edit{
+  margin-top: 40px;
+  @include btn
+}
+
+.group-member-to-top{
+  margin-bottom: 20px;
+  margin-top: 50px;
+  @include btn
+}
+
+.group-member-menus{
+  margin-bottom: 20px;
+  margin-top: 10px;
+  @include btn
+}
+
+.group-member-name{
+  padding: 10px;
+  display: block;
+  width:150px;
+  &:hover{
+    background-color: #ccc;
+  }
+  a{
+    text-decoration: none;
+    color:black;
+    display: block;
+  }
+}
+
+.group-member-table{
+  width:300px;
+}
+
+.group-menus{
+  li a{
+    text-decoration: none;
+  }
+}
+
+.group-menus-title{
+  padding-bottom: 5px;
+  font-size: 30px;
+  margin-top: 70px;
+}
+
+.group-new-form-body{
+  height: 450px;
+  top: 110px;
+  left:25%;
+  @include form
+}
+
+.group-post-list{
+  border: 1px solid #888;
+  width:550px;
+}
+
+.group-show-form-body{
+  height: 400px;
+  margin-top: 70px;/* 実際の位置が決まるのはここ */
+  left:45%;
+  top:40%;/* ここの数字で位置は決まらないが、これがないと変な所にいく */
+  @include form
+}
+
+.joined-group{
+  padding-bottom: 5px;
+  font-size: 30px;
+}
+
+.our-image{
+  width:40px;
+  height:40px;
+  object-fit: cover;
+}
+
+.repeat-field{
+  margin-left: 10%;
+  width:80%;
+  font-size: 20px;
+  padding:10px 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.repeat-text{
+  font-size: 30px;
+  margin-top: 30px;
+}
+
+.to-group-edit{
+  margin-bottom: 20px;
+  margin-top: 70px;
+}

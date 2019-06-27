@@ -1,0 +1,183 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin btn{
+  text-decoration: none;
+  display: inline-block;
+  background-color: #f8f8f8;
+  padding:10px 20px;
+  border-radius: 5px;
+  color: black;
+  background-color: #c0c0c0;
+  &:hover{
+    background-color: #e0e0e0;
+    text-decoration: none;
+  }
+}
+
+.bought-container{
+  margin-left: 5%;
+  float:left;
+  width: 700px;
+}
+
+.bought-index-title{
+  padding-bottom: 5px;
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+.bought-list{
+  margin-top: 100px;
+  margin-left: 230px;
+  @include btn
+}
+
+.bought-table{
+  border: 1px solid #888;
+  width:600px;
+}
+
+.buy-btn{
+  color:#ddd;
+}
+
+.buyer{
+  text-decoration: none;
+  width: 120px;
+  text-align: center;
+  a{
+    text-decoration: none;
+    color: #fca019;
+  }
+}
+
+.buying{
+  text-decoration: none;
+  width: 80px;
+  text-align: center;
+  a{
+    text-decoration: none;
+    color: #fca019;
+  }
+}
+
+.buy-list{
+  padding: 10px;
+  display: block;
+  width:350px;
+  &:hover{
+    background-color: #ccc;
+  }
+  a{
+    text-decoration: none;
+    color:black;
+    display: block;
+  }
+}
+
+.group-bought-table{
+  border: 1px solid #888;
+  width:800px;
+}
+
+.group-bought-to-top{
+  margin-bottom: 20px;
+  margin-top: 20px;
+  @include btn
+}
+
+.group-wide-container{
+  margin-left: 15%;
+  float:left;
+  width: 70%;
+}
+
+.my-image{
+  width:40px;
+  height:40px;
+  object-fit: cover;
+}
+
+.new-form-body{
+  width: 50%;
+  height: 400px;
+  background-color: #7abcff;
+  position: relative;
+  border-radius: 10px;
+  position: absolute;
+  top: 110px;
+  left:25%;
+  opacity: 0.8;
+}
+
+.option{
+  padding:5px 5px;
+  display: block;
+}
+
+.posts-buying{
+  height:40px;
+  margin-bottom: 10px;
+  border: 1px solid #888;
+  margin:0;
+}
+
+.posts-container{
+  margin-top: 70px;
+  margin-left: 5%;
+  width: 600px;
+  float:left;
+}
+
+.posts-index{
+  /*background-color: #f8f8f8;*/
+  position: relative;
+  top:0px;
+}
+
+.posts-index-item{
+  width:500px;
+  height:40px;
+  float: left;
+  display: inline-block;
+}
+
+.posts-index-title{
+  padding-bottom: 5px;
+  font-size: 30px;
+}
+
+.post-list{
+  border: 1px solid #888;
+  width:500px;
+}
+
+.posts-repeat{
+  margin-top: 70px;
+  margin-right: 5%;
+  width: 600px;
+  float: right;
+}
+
+.post-right{
+  margin-bottom: 10px;
+  border: 1px solid #888;
+  margin:0;
+}
+
+.repeat-day{
+  padding-bottom: 5px;
+  font-size: 20px;
+}
+
+.repeat-post-list{
+  border: 1px solid #888;
+  width:500px;
+}
+
+.user-image{
+  width:40px;
+  object-fit: cover;
+}

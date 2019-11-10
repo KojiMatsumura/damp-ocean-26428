@@ -6,9 +6,4 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   #  assert_response :success
   #end
 
-  test "should get all index" do
-    get "/posts/all_index"
-    assert_response :success
-  end #このページだけはログイン不要
-
 end
